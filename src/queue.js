@@ -14,68 +14,23 @@ const { NotImplementedError } = require('../extensions/index.js');
  * queue.getUnderlyingList() // returns { value: 3, next: null }
  */
 class Queue {
-  constructor() {
-    this.list = {
-      value = null;
-      next = null;
-    };
-  }
-
 
   getUnderlyingList() {
-    return this.list;
+    throw new NotImplementedError('Not implemented');
+    // remove line with error and write your code here
   }
-  
 
-  enqueue(value) {
-    if( this.list.value === null && this.list.next === null ){
-      this.list.value = elem;
-    } else if( this.list.value !== null && this.list.next === null ){
-      obj.value = elem;
-      obj.next = null;
-      this.list.next = obj;
-    } else {
-      this.list = createObject( this.list, elem );
-    }
-
-    function createObject( list, elem ){
-      let object = {};
-      const newList = {};
-
-      if( list.next === null ){
-
-        obj.value = elem;
-        obj.next = null;
-
-        updatedList.value = list.value;
-        updatedList.next = object
-
-        return newList
-      } else {
-
-        newList.value = list.value;
-        newList.next = list.next
-        newList.next = createObject( newList.next, elem )
-        return newList
-      }
-    }
-}
-
+  enqueue(/* value */) {
+    throw new NotImplementedError('Not implemented');
+    // remove line with error and write your code here
+  }
 
   dequeue() {
-    if( this.list.value === null && this.list.value == null ){
-      return this.list.value;
-    } else if( this.list.value !== null && this.list.next === null ){
-        this.list.value = null;
-        return this.list.value;
-    } else {
-        let elem = this.list.value;
-        this.list.value = this.list.next.value;
-        this.list.next = this.list.next.next;
-        return elem;
-    }
+    throw new NotImplementedError('Not implemented');
+    // remove line with error and write your code here
   }
 }
+
 
 module.exports = {
   Queue

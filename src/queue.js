@@ -13,23 +13,37 @@ const { NotImplementedError } = require('../extensions/index.js');
  * queue.dequeue(); // returns the top element from queue and deletes it, returns 1
  * queue.getUnderlyingList() // returns { value: 3, next: null }
  */
+ListNode = function (elem) {
+  this.value = elem;
+  this.next = null;
+}
 class Queue {
 
-  getUnderlyingList() {
-    throw new NotImplementedError('Not implemented');
-    // remove line with error and write your code here
+  constructor() {
+    this.listQueue = null;
   }
 
-  enqueue(/* value */) {
-    throw new NotImplementedError('Not implemented');
-    // remove line with error and write your code here
+  getUnderlyingList() {
+    return this.listQueue;
   }
+
+  enqueue(value) {
+    if (!this.listQueue) {
+        this.listQueue = new ListNode(value);
+    } else {
+        let current = this.listQueue;
+        while (current.next) current = current.next;
+        current.next = new ListNode(value);
+    }
+}
 
   dequeue() {
-    throw new NotImplementedError('Not implemented');
-    // remove line with error and write your code here
+    let value = this.listQueue.value;
+    this._list = this.listQueue.next;
+    return value;
   }
 }
+
 
 
 module.exports = {

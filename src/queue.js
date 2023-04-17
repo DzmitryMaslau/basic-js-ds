@@ -28,21 +28,29 @@ class Queue {
   }
 
   enqueue(value) {
+    let node = new ListNode(value);
     if (!this.listQueue) {
-        this.listQueue = new ListNode(value);
+      this.listQueue = node;
     } else {
         let current = this.listQueue;
-        while (current.next) current = current.next;
-        current.next = new ListNode(value);
+      while (current.next) { 
+        current = current.next;
+      }
+        current.next = node;
     }
 }
 
   dequeue() {
-    let value = this.listQueue.value;
-    this._list = this.listQueue.next;
-    return value;
+    if (!this.listQueue) {
+      return null;
+    } else {
+      let current = this.listQueue;
+      this.listQueue = current.next;
+      return current.value;
+    }
   }
 }
+
 
 
 

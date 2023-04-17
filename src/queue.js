@@ -15,31 +15,65 @@ const { NotImplementedError } = require('../extensions/index.js');
  */
 class Queue {
   constructor() {
-    this.head = null;
-    this.tail = null;
+    this.list = {
+      value = null;
+      next = null;
+    };
   }
 
 
   getUnderlyingList() {
-    return this.head;
-  }
-
-  enqueue(value) {
-    const element = new ListNode(value);
-    if (this.head) {
-      this.tail.next = element;
-      this.tail = element;
-    } else {
-      this.head = element;
-      this.tail = element;
-    }
+    return this.list;
   }
   
 
+  enqueue(value) {
+    if( this.list.value === null && this.list.next === null ){
+      this.list.value = elem;
+    } else if( this.list.value !== null && this.list.next === null ){
+      obj.value = elem;
+      obj.next = null;
+      this.list.next = obj;
+    } else {
+      this.list = createObject( this.list, elem );
+    }
+
+    function createObject( list, elem ){
+      let object = {};
+      const newList = {};
+
+      if( list.next === null ){
+
+        obj.value = elem;
+        obj.next = null;
+
+        updatedList.value = list.value;
+        updatedList.next = object
+
+        return newList
+      } else {
+
+        newList.value = list.value;
+        newList.next = list.next
+        newList.next = createObject( newList.next, elem )
+        return newList
+      }
+    }
+}
+
+
   dequeue() {
-    const mustRemove = this.head;
-    this.head = this.head.next;
-    return mustRemove.value;
+    if( this.list.value === null && this.list.value == null ){
+      return this.list.value;
+    } else if( this.list.value !== null && this.list.next === null ){
+        this.list.value = null;
+        return this.list.value;
+    } else {
+        let elem = this.list.value;
+        this.list.value = this.list.next.value;
+        this.list.next = this.list.next.next;
+        return elem;
+    }
   }
 }
 
